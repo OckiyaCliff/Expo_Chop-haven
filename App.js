@@ -1,11 +1,19 @@
+import { Canvas } from "@react-three/fiber/native";
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { BottomUI } from "./components/BottomUI";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open Haven</Text>
-      <Button title="Press Me" />
+      <Canvas camera={{ position: [-2, 2.5, 5], fov: 30 }}>
+        <color attach="background" args={["#512DA8"]} />
+        <mesh>
+          <boxGeometry args={[1, 1, 1]}/>
+          <meshBasicMaterial color="hotpink" />
+        </mesh>
+      </Canvas>
+      <BottomUI />
       <StatusBar style="auto" />
     </View>
   );
@@ -15,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
